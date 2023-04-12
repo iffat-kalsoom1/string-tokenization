@@ -19,10 +19,7 @@ tokenize('Hello world! This is an example.', true);
     "ple.", "exampl", "mple.", "example","ample.", "example.", "xample."
     ]
 */
-export function tokenize(
-  string: string,
-  shouldTokenizeWords: boolean,
-): string[] {
+function tokenize(string: string, shouldTokenizeWords: boolean): string[] {
   const tokensArray = Array.from(new Set(string.toLowerCase().split(' ')))
 
   if (!shouldTokenizeWords) return tokensArray
@@ -36,19 +33,17 @@ export function tokenize(
       const tokenLength = token.length
 
       for (let i = 0; i < tokenLength; i++) {
-        wordTokens = wordTokens + token[i]
+        wordTokens += token[i]
         resultTokens.push(wordTokens)
 
         if (token[tokenLength - i]) {
-          reverseWordToken = reverseWordToken + token[tokenLength - i]
+          reverseWordToken += token[tokenLength - i]
           let revToken = ''
           for (let i = reverseWordToken.length - 1; i >= 0; i--) {
             revToken += reverseWordToken[i]
           }
           resultTokens.push(revToken)
         }
-
-        if (i + 1 === tokenLength) wordTokens = ''
       }
       resultTokens.push(wordTokens)
     })
