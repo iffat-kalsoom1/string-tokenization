@@ -1,6 +1,6 @@
 {
   "name": "string-tokenization",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "string tokenization",
   "repository": "https://github.com/iffat-kalsoom1/string-tokenization.git",
   "main": "index.js",
