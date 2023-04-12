@@ -1,0 +1,1 @@
+This library takes a string and return it's tokenized string. e.g. input: 'cats and dogs' output: 'c ca cat cats a an and d do dog dogs'
