@@ -1,11 +1,13 @@
 {
-    "include": ["index.ts", "string-tokenization.ts"],
-    "exclude": ["node_modules"],
-    "ts-node": {
-        "transpileOnly": true,
-        "compilerOptions": {
-          "module": "CommonJS",
-          "target": "ESNext",
-        }
-      },
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "./*.ts"
+  ]
 }
