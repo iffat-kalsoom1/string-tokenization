@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "string tokenization",
   "repository": "https://github.com/iffat-kalsoom1/string-tokenization.git",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "ts-node index.ts",
     "release": "git add . && git commit && npm version patch && npm run build && npm publish"
