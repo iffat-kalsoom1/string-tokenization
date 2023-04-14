@@ -35,7 +35,7 @@ export function tokenize(string: string, shouldTokenizeWords: boolean): string[]
       let reverseWordToken = ''
       for (let i = 0; i < stringLength; i++) {
         wordTokens += string[i]
-        resultTokens.push(wordTokens)
+        resultTokens.push(wordTokens.toLowerCase())
 
         if (string[stringLength - i]) {
           reverseWordToken += string[stringLength - i]
@@ -43,10 +43,10 @@ export function tokenize(string: string, shouldTokenizeWords: boolean): string[]
           for (let i = reverseWordToken.length - 1; i >= 0; i--) {
             revToken += reverseWordToken[i]
           }
-          resultTokens.push(revToken)
+          resultTokens.push(revToken.toLowerCase())
         }
       }
-      resultTokens.push(wordTokens)
+      resultTokens.push(wordTokens.toLowerCase())
     }
 
     tokensArray.forEach(token => {
@@ -57,7 +57,7 @@ export function tokenize(string: string, shouldTokenizeWords: boolean): string[]
 
       for (let i = 0; i < tokenLength; i++) {
         wordTokens += token[i]
-        resultTokens.push(wordTokens)
+        resultTokens.push(wordTokens.toLowerCase())
 
         if (token[tokenLength - i]) {
           reverseWordToken += token[tokenLength - i]
@@ -65,10 +65,10 @@ export function tokenize(string: string, shouldTokenizeWords: boolean): string[]
           for (let i = reverseWordToken.length - 1; i >= 0; i--) {
             revToken += reverseWordToken[i]
           }
-          resultTokens.push(revToken)
+          resultTokens.push(revToken.toLowerCase())
         }
       }
-      resultTokens.push(wordTokens)
+      resultTokens.push(wordTokens.toLowerCase())
     })
     return Array.from(new Set(resultTokens))
   }
