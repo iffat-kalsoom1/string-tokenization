@@ -16,16 +16,39 @@ tokenize('Hello world! This is an example.', true);
     "ld!", "world", "rld!", "world!","orld!", "t", "th",
     "s","thi", "is", "this", "his","i", "a", "an", "n",
     "e", "ex", ".", "exa","e.",  "exam", "le.", "examp",
-    "ple.", "exampl", "mple.", "example","ample.", "example.", "xample."
+    "ple.", "exampl", "mple.", "example","ample.", "example.", "xample.",
+    "hello ", "hello w", "hello wor" ...
     ]
 */
-function tokenize(string: string, shouldTokenizeWords: boolean): string[] {
+export function tokenize(string: string, shouldTokenizeWords: boolean): string[] {
   const tokensArray = Array.from(new Set(string.toLowerCase().split(' ')))
 
   if (!shouldTokenizeWords) return tokensArray
 
   if (shouldTokenizeWords) {
     let resultTokens = []
+
+    const stringLength = string.length;
+    for (let i = 0; i < stringLength; i++) {
+      const element = string[i];
+      let wordTokens = ''
+      let reverseWordToken = ''
+      for (let i = 0; i < stringLength; i++) {
+        wordTokens += string[i]
+        resultTokens.push(wordTokens)
+
+        if (string[stringLength - i]) {
+          reverseWordToken += string[stringLength - i]
+          let revToken = ''
+          for (let i = reverseWordToken.length - 1; i >= 0; i--) {
+            revToken += reverseWordToken[i]
+          }
+          resultTokens.push(revToken)
+        }
+      }
+      resultTokens.push(wordTokens)
+    }
+
     tokensArray.forEach(token => {
       let wordTokens = ''
       let reverseWordToken = ''
