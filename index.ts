@@ -1,3 +1,3 @@
-import { stringTokenization } from "./string-tokenization";
+import { tokenize } from './string-tokenization'
 
-export {stringTokenization};
+export { tokenize }
