@@ -2,6 +2,7 @@
 Tokenize a given string.
 @param {string} string - The string to be tokenized.
 @param {boolean} shouldTokenizeWords - Indicates whether to tokenize individual words or not.
+@param {boolean} removePunctuation - Indicates whether to remove punctuations or not
 @returns {string[]} - An array of tokens.
 @example
 // Tokenize a string
@@ -20,7 +21,8 @@ tokenize('Hello world! This is an example.', true);
     "hello ", "hello w", "hello wor" ...
     ]
 */
-export function tokenize(string: string, shouldTokenizeWords: boolean): string[] {
+export function tokenize(string: string, shouldTokenizeWords?: boolean, removePunctuation?: boolean): string[] {
+  if (removePunctuation) string = string.replace(/[^\w\s]/gi, '');
   const tokensArray = Array.from(new Set(string.toLowerCase().split(' ')))
 
   if (!shouldTokenizeWords) return tokensArray
@@ -30,7 +32,6 @@ export function tokenize(string: string, shouldTokenizeWords: boolean): string[]
 
     const stringLength = string.length;
     for (let i = 0; i < stringLength; i++) {
-      const element = string[i];
       let wordTokens = ''
       let reverseWordToken = ''
       for (let i = 0; i < stringLength; i++) {
