@@ -27,50 +27,48 @@ export function tokenize(string: string, shouldTokenizeWords?: boolean, removePu
 
   if (!shouldTokenizeWords) return tokensArray
 
-  if (shouldTokenizeWords) {
-    let resultTokens = []
+  let resultTokens = []
 
-    const stringLength = string.length;
+  const stringLength = string.length;
+  for (let i = 0; i < stringLength; i++) {
+    let wordTokens = ''
+    let reverseWordToken = ''
     for (let i = 0; i < stringLength; i++) {
-      let wordTokens = ''
-      let reverseWordToken = ''
-      for (let i = 0; i < stringLength; i++) {
-        wordTokens += string[i]
-        resultTokens.push(wordTokens.toLowerCase())
-
-        if (string[stringLength - i]) {
-          reverseWordToken += string[stringLength - i]
-          let revToken = ''
-          for (let i = reverseWordToken.length - 1; i >= 0; i--) {
-            revToken += reverseWordToken[i]
-          }
-          resultTokens.push(revToken.toLowerCase())
-        }
-      }
+      wordTokens += string[i]
       resultTokens.push(wordTokens.toLowerCase())
+
+      if (string[stringLength - i]) {
+        reverseWordToken += string[stringLength - i]
+        let revToken = ''
+        for (let i = reverseWordToken.length - 1; i >= 0; i--) {
+          revToken += reverseWordToken[i]
+        }
+        resultTokens.push(revToken.toLowerCase())
+      }
     }
-
-    tokensArray.forEach(token => {
-      let wordTokens = ''
-      let reverseWordToken = ''
-
-      const tokenLength = token.length
-
-      for (let i = 0; i < tokenLength; i++) {
-        wordTokens += token[i]
-        resultTokens.push(wordTokens.toLowerCase())
-
-        if (token[tokenLength - i]) {
-          reverseWordToken += token[tokenLength - i]
-          let revToken = ''
-          for (let i = reverseWordToken.length - 1; i >= 0; i--) {
-            revToken += reverseWordToken[i]
-          }
-          resultTokens.push(revToken.toLowerCase())
-        }
-      }
-      resultTokens.push(wordTokens.toLowerCase())
-    })
-    return Array.from(new Set(resultTokens))
+    resultTokens.push(wordTokens.toLowerCase())
   }
+
+  tokensArray.forEach(token => {
+    let wordTokens = ''
+    let reverseWordToken = ''
+
+    const tokenLength = token.length
+
+    for (let i = 0; i < tokenLength; i++) {
+      wordTokens += token[i]
+      resultTokens.push(wordTokens.toLowerCase())
+
+      if (token[tokenLength - i]) {
+        reverseWordToken += token[tokenLength - i]
+        let revToken = ''
+        for (let i = reverseWordToken.length - 1; i >= 0; i--) {
+          revToken += reverseWordToken[i]
+        }
+        resultTokens.push(revToken.toLowerCase())
+      }
+    }
+    resultTokens.push(wordTokens.toLowerCase())
+  })
+  return Array.from(new Set(resultTokens))
 }
