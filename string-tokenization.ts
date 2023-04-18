@@ -23,7 +23,7 @@ tokenize('Hello world! This is an example.', true);
 */
 export function tokenize(string: string, shouldTokenizeWords?: boolean, removePunctuation?: boolean): string[] {
   if (removePunctuation) string = string.replace(/[^\w\s]/gi, '');
-  
+
   const tokensArray = Array.from(new Set(string.toLowerCase().split(' ')))
 
   if (!shouldTokenizeWords) return tokensArray
@@ -53,7 +53,6 @@ export function tokenize(string: string, shouldTokenizeWords?: boolean, removePu
   tokensArray.forEach(token => {
     let wordTokens = ''
     let reverseWordToken = ''
-
     const tokenLength = token.length
 
     for (let i = 0; i < tokenLength; i++) {
